@@ -3,7 +3,7 @@ require ROOT . "/DB.php";
 
 class News
 {
-    public static function getCount()
+    public static function getTotal()
     {
         $sql = "
             SELECT count(*) total

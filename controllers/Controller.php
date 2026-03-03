@@ -7,10 +7,10 @@ class Controller
     {
         if (isset($_GET['id'])) {
             $newsController = new NewsController();
-            $newsController->selectedNews($_GET['id']);
+            $newsController->selectedNewsPage($_GET['id']);
         } else {
             $newsController = new NewsController();
-            $newsController->allNews();
+            $newsController->allNewsPage();
         }
     }
 }

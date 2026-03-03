@@ -178,10 +178,10 @@ body {
 
 
 /* =====================
-    main-page / Файл main.php
+    all_news / Файл all_news
 ===================== */
 
-.main-page {
+.all-news {
     display: flex;
     flex-direction: column;
 }
@@ -332,7 +332,7 @@ body {
 
 
 /* =====================
-    work_news / Страница с выбранной новостью
+    Selected news page / Страница с выбранной новостью
 ===================== */
 
 .work-news {

@@ -1,6 +1,6 @@
 <ul class="pagination__list">
     <?php
-    if ($hasPrev):
+    if ($hasPrevPage):
     ?>
         <li class="pagination__item">
             <a href="<?=BASE_URL?>?page=<?= $currentPageNumber - 1 ?>" class="pagination__link pagination__link--before">
@@ -12,7 +12,7 @@
     ?>
 
     <?php
-    for ($i = $beginPage; $i <= $endPage; $i++):
+    for ($i = $beginPaginationPage; $i <= $endPaginationPage; $i++):
     ?>
         <li class="pagination__item">
             <a href="<?=BASE_URL?>?page=<?=$i?>" class="pagination__link <?= $i == $currentPageNumber ? 'pagination__link--active' : '' ?>"><?=$i?></a>
@@ -22,7 +22,7 @@
     ?>
 
     <?php
-    if ($hasNext):
+    if ($hasNextPage):
     ?>
         <li class="pagination__item">
             <a href="<?=BASE_URL?>?page=<?= $currentPageNumber + 1 ?>" class="pagination__link pagination__link--next">

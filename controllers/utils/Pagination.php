@@ -14,24 +14,24 @@ class Pagination
     public static function getInfo($currentPageNumber, $totalPages)
     {
         if ($totalPages <= 3) {
-            $beginPage = 1;
-            $endPage = $totalPages;
+            $beginPaginationPage = 1;
+            $endPaginationPage = $totalPages;
         } else {
             if ($currentPageNumber === 1) {
-                $beginPage = 1;
-                $endPage = 3;
+                $beginPaginationPage = 1;
+                $endPaginationPage = 3;
             } elseif (($currentPageNumber == $totalPages) || ($currentPageNumber + 1 == $totalPages)) {
-                $beginPage = $totalPages - 2;
-                $endPage = $totalPages;
+                $beginPaginationPage = $totalPages - 2;
+                $endPaginationPage = $totalPages;
             } else {
-                $beginPage = $currentPageNumber;
-                $endPage = $currentPageNumber + 2;
+                $beginPaginationPage = $currentPageNumber;
+                $endPaginationPage = $currentPageNumber + 2;
             }
         }
 
         $hasPreviousPage = self::hasPreviousPage($currentPageNumber);
         $hasNextPage = self::hasNextPage($currentPageNumber, $totalPages);
 
-        return [$beginPage, $endPage, $hasPreviousPage, $hasNextPage];
+        return [$beginPaginationPage, $endPaginationPage, $hasPreviousPage, $hasNextPage];
     }
 }
