@@ -1,5 +1,5 @@
 <?php
-require ROOT . "/DB.php";
+require ROOT . "/utils/DB.php";
 
 class News
 {

@@ -1,11 +1,11 @@
 <?php
 require ROOT . '/models/News.php';
-require ROOT . '/controllers/utils/Pagination.php';
+require ROOT . '/utils/Pagination.php';
 
 class NewsController
 {
     protected $model;
-    
+
     public function __construct()
     {
         $this->model = new News();
