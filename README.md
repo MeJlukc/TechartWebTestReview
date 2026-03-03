@@ -1,5 +1,3 @@
-111
-
 ## Мини-сайт новостей (PHP / MySQL / MVC) ##
 
 Демо: https://solomatinyarik.tech
