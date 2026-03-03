@@ -3,7 +3,7 @@ require ROOT . "/DB.php";
 
 class News
 {
-    public function getCount()
+    public static function getCount()
     {
         $sql = "
             SELECT count(*) total
@@ -18,7 +18,7 @@ class News
         return $row['total'];
     }
 
-    public function getList($limit, $offset)
+    public static function getList($limit, $offset)
     {
         $sql = "
             SELECT *,
@@ -37,7 +37,7 @@ class News
         return $rs->fetchAll();
     }
 
-    public function findNews($id)
+    public static function findById($id)
     {
         $sql = "
             SELECT *,
@@ -54,7 +54,7 @@ class News
         return $rs->fetch();
     }
 
-    public function getLastOne()
+    public static function getLastOne()
     {
         $sql = "
             SELECT *,

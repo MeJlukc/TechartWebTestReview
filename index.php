@@ -1,11 +1,5 @@
 <?php
 require __DIR__ . '/config/config.php';
-require ROOT . '/controllers/NewsController.php';
+require ROOT . '/controllers/Controller.php';
 
-$controller = new NewsController();
-
-if (isset($_GET['id'])) {
-    $controller->selectedNews($_GET['id']);
-} else {
-    $controller->allNews();
-}
+Controller::index();
