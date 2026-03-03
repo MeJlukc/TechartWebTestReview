@@ -1,6 +1,6 @@
 <?php
 require __DIR__ . '/config/config.php';
-require ROOT . '/App/Controllers/NewsController.php';
+require __DIR__ . '/config/autoloader.php';
 
 use App\Controllers\NewsController;
 

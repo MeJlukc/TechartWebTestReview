@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-require ROOT . "/App/Utils/DB.php";
-
 use App\Utils\DB;
 use PDO;
 

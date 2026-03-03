@@ -2,9 +2,6 @@
 
 namespace App\Controllers;
 
-require ROOT . '/App/Models/News.php';
-require ROOT . '/App/Utils/Pagination.php';
-
 use App\Models\News;
 use App\Utils\Pagination;
 
