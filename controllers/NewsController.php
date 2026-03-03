@@ -48,8 +48,9 @@ class NewsController
 
         $lastNews = $this->model->getLastOne();
         
-        $pagination = new Pagination($currentPageNumber, $totalPages);
-        [$startPaginationPage, $endPaginationPage, $hasPrev, $hasNext] = $pagination->getPagination();
+        // $pagination = new Pagination($currentPageNumber, $totalPages);
+        // [$startPaginationPage, $endPaginationPage, $hasPrev, $hasNext] = $pagination->getPagination();
+        [$beginPage, $endPage, $hasPrev, $hasNext] = Pagination::getInfo($currentPageNumber, $totalPages);
 
         require ROOT . '/views/main.php';
     }

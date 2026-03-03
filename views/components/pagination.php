@@ -12,7 +12,7 @@
     ?>
 
     <?php
-    for ($i = $startPaginationPage; $i <= $endPaginationPage; $i++):
+    for ($i = $beginPage; $i <= $endPage; $i++):
     ?>
         <li class="pagination__item">
             <a href="<?=BASE_URL?>?page=<?=$i?>" class="pagination__link <?= $i == $currentPageNumber ? 'pagination__link--active' : '' ?>"><?=$i?></a>
