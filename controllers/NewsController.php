@@ -4,12 +4,12 @@ require ROOT . '/controllers/utils/Pagination.php';
 
 class NewsController
 {
-    public function notFoundPage()
+    public static function notFoundPage()
     {
         require ROOT . '/views/404.php';
     }
 
-    public function allNewsPage()
+    public static function allNewsPage()
     {
         $currentPageNumber = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 
@@ -19,7 +19,7 @@ class NewsController
         $totalPages = ceil($totalNews / $limitNewsItems);
 
         if (($currentPageNumber < 1) || $currentPageNumber > $totalPages) {
-            $this->notFoundPage();
+            self::notFoundPage();
             return;
         }
 
@@ -34,12 +34,12 @@ class NewsController
         require ROOT . '/views/all_news.php';
     }
 
-    public function selectedNewsPage($id)
+    public static function selectedNewsPage($id)
     {
         $totalNews = News::getTotal();
 
         if ($id < 1 || $id > $totalNews) {
-            $this->notFoundPage();
+            self::notFoundPage();
             return;
         } 
 
