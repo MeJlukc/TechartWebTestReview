@@ -1,6 +1,4 @@
 <?php
-// require ROOT . "/dbconfig.php";
-
 class DB
 {
     public static function getConnection()

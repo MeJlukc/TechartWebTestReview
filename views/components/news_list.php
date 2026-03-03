@@ -3,7 +3,7 @@
 
     <div class="news__list">
         <?php
-        foreach ($news as $item):
+        foreach ($newsList as $item):
         ?>
             <div class="news-card">
                 <p class="news-card__date date"><?=$item['fmt']?></p>
