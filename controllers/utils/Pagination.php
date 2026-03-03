@@ -1,36 +1,45 @@
 <?php
 class Pagination
 {
-    public static function hasPreviousPage($currentPageNumber)
+    protected $currentPageNumber;
+    protected $totalPages;
+
+    public function __construct($currentPageNumber, $totalPages)
     {
-        return $currentPageNumber > 1;
+        $this->currentPageNumber = $currentPageNumber;
+        $this->totalPages = $totalPages;
     }
 
-    public static function hasNextPage($currentPageNumber, $totalPages)
+    public function hasPreviousPage()
     {
-        return $currentPageNumber < $totalPages;
+        return $this->currentPageNumber > 1;
     }
 
-    public static function getInfo($currentPageNumber, $totalPages)
+    public function hasNextPage()
     {
-        if ($totalPages <= 3) {
+        return $this->currentPageNumber < $this->totalPages;
+    }
+
+    public function getPagination()
+    {
+        if ($this->totalPages <= 3) {
             $beginPaginationPage = 1;
-            $endPaginationPage = $totalPages;
+            $endPaginationPage = $this->totalPages;
         } else {
-            if ($currentPageNumber === 1) {
+            if ($this->currentPageNumber === 1) {
                 $beginPaginationPage = 1;
                 $endPaginationPage = 3;
-            } elseif (($currentPageNumber == $totalPages) || ($currentPageNumber + 1 == $totalPages)) {
-                $beginPaginationPage = $totalPages - 2;
-                $endPaginationPage = $totalPages;
+            } elseif (($this->currentPageNumber == $this->totalPages) || ($this->currentPageNumber + 1 == $this->totalPages)) {
+                $beginPaginationPage = $this->totalPages - 2;
+                $endPaginationPage = $this->totalPages;
             } else {
-                $beginPaginationPage = $currentPageNumber;
-                $endPaginationPage = $currentPageNumber + 2;
+                $beginPaginationPage = $this->currentPageNumber;
+                $endPaginationPage = $this->currentPageNumber + 2;
             }
         }
 
-        $hasPreviousPage = self::hasPreviousPage($currentPageNumber);
-        $hasNextPage = self::hasNextPage($currentPageNumber, $totalPages);
+        $hasPreviousPage = $this->hasPreviousPage();
+        $hasNextPage = $this->hasNextPage();
 
         return [$beginPaginationPage, $endPaginationPage, $hasPreviousPage, $hasNextPage];
     }

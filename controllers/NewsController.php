@@ -4,46 +4,54 @@ require ROOT . '/controllers/utils/Pagination.php';
 
 class NewsController
 {
-    public static function notFoundPage()
+    protected $model;
+    
+    public function __construct()
+    {
+        $this->model = new News();
+    }
+
+    public function notFoundPage()
     {
         require ROOT . '/views/404.php';
     }
 
-    public static function allNewsPage()
+    public function allNewsPage()
     {
         $currentPageNumber = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 
         $limitNewsItems = 4;
 
-        $totalNews = News::getTotal();
+        $totalNews = $this->model->getTotal();
         $totalPages = ceil($totalNews / $limitNewsItems);
 
         if (($currentPageNumber < 1) || $currentPageNumber > $totalPages) {
-            self::notFoundPage();
+            $this->notFoundPage();
             return;
         }
 
         $offset = ($currentPageNumber - 1) * $limitNewsItems;
 
-        $newsList = News::getList($limitNewsItems, $offset);
+        $newsList = $this->model->getList($limitNewsItems, $offset);
 
-        $lastNewsItem = News::getLastOne();
+        $lastNewsItem = $this->model->getLastOne();
 
-        [$beginPaginationPage, $endPaginationPage, $hasPrevPage, $hasNextPage] = Pagination::getInfo($currentPageNumber, $totalPages);
+        $pagination = new Pagination($currentPageNumber, $totalPages);
+        [$beginPaginationPage, $endPaginationPage, $hasPrevPage, $hasNextPage] = $pagination->getPagination();
 
         require ROOT . '/views/all_news.php';
     }
 
-    public static function selectedNewsPage($id)
+    public function selectedNewsPage($id)
     {
-        $totalNews = News::getTotal();
+        $totalNews = $this->model->getTotal();
 
         if ($id < 1 || $id > $totalNews) {
-            self::notFoundPage();
+            $this->notFoundPage();
             return;
         } 
 
-        $news = News::findById($id);
+        $news = $this->model->findById($id);
 
         require ROOT . '/views/selected_news.php';
     }
