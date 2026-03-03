@@ -17,7 +17,7 @@
     </div>
 
     <?php
-    require ROOT . '/App/Views/components/pagination.php';
+    require ROOT . '/Views/components/pagination.php';
     ?>
 
 </section>

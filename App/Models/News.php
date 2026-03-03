@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-require ROOT . "/App/utils/DB.php";
+require ROOT . "/App/Utils/DB.php";
 
-use App\utils\DB;
+use App\Utils\DB;
 use PDO;
 
 class News

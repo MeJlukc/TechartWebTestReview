@@ -3,10 +3,10 @@
 namespace App\Controllers;
 
 require ROOT . '/App/Models/News.php';
-require ROOT . '/App/utils/Pagination.php';
+require ROOT . '/App/Utils/Pagination.php';
 
 use App\Models\News;
-use App\utils\Pagination;
+use App\Utils\Pagination;
 
 class NewsController
 {
@@ -19,7 +19,7 @@ class NewsController
 
     public function notFoundPage()
     {
-        require ROOT . '/App/Views/404.php';
+        require ROOT . '/Views/404.php';
     }
 
     public function allNewsPage()
@@ -45,7 +45,7 @@ class NewsController
         $pagination = new Pagination($currentPageNumber, $totalPages);
         [$beginPaginationPage, $endPaginationPage, $hasPrevPage, $hasNextPage] = $pagination->getPagination();
 
-        require ROOT . '/App/Views/all_news.php';
+        require ROOT . '/Views/all_news.php';
     }
 
     public function selectedNewsPage($id)
@@ -59,6 +59,6 @@ class NewsController
 
         $news = $this->model->findById($id);
 
-        require ROOT . '/App/Views/selected_news.php';
+        require ROOT . '/Views/selected_news.php';
     }
 }
