@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Галактический вестник</title>
-    <link rel="stylesheet" href="<?=BASE_URL?>assets/style.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>App/assets/styles/style.css">
 </head>
 <body>
 
     <?php
-    require ROOT . '/views/components/header.php';
+    require ROOT . '/App/Views/components/header.php';
     ?>
 
     <?php
-    require ROOT . '/views/components/not_found.php';
+    require ROOT . '/App/Views/components/work_news.php';
     ?>
-    
+
     <?php
-    require ROOT . '/views/components/footer.php';
+    require ROOT . '/App/Views/components/footer.php';
     ?>
-    
+
 </body>
 </html>

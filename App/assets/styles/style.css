@@ -262,12 +262,12 @@ body {
     content: '';
     width: 25px;
     height: 25px;
-    background: url(./images/arrow-right-brand.svg) center/contain no-repeat;
+    background: url('./../images/arrow-right-brand.svg') center/contain no-repeat;
     transition: 0.3s;   
 }
 
 .news-card__button:hover::after {
-    background: url(./images/arrow-right-white.svg) center/contain no-repeat;
+    background: url('./../images/arrow-right-white.svg') center/contain no-repeat;
 }
 
 
@@ -316,13 +316,13 @@ body {
 }
 
 .pagination__arrow--before {
-    background: url('./images/arrow-right-for-pagination.svg') center/contain no-repeat;
+    background: url('./../images/arrow-right-for-pagination.svg') center/contain no-repeat;
     /* использовал scale(-1), чтобы развернуть имеющуюся стрелку и не брать картинку вне макета */
     transform: scale(-1);
 }
 
 .pagination__arrow--next {
-    background: url('./images/arrow-right-for-pagination.svg') center/contain no-repeat;
+    background: url('./../images/arrow-right-for-pagination.svg') center/contain no-repeat;
 }
 
 .pagination__link--before:hover .pagination__arrow--before,
@@ -388,11 +388,11 @@ body {
   content: '';
   width: 25px;
   height: 25px;
-  background: url('./images/arrow-left-brand.svg') center/contain no-repeat;
+  background: url('./../images//arrow-left-brand.svg') center/contain no-repeat;
 }
 
 .work-news__button:hover::before {
-    background: url('./images/arrow-right-white.svg') center/contain no-repeat;
+    background: url('./../images//arrow-right-white.svg') center/contain no-repeat;
     /* использовал scale(-1), чтобы развернуть имеющуюся стрелку и не брать картинку вне макета */
     transform: scale(-1);
 }

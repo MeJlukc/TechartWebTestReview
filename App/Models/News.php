@@ -1,5 +1,11 @@
 <?php
-require ROOT . "/utils/DB.php";
+
+namespace App\Models;
+
+require ROOT . "/App/utils/DB.php";
+
+use App\utils\DB;
+use PDO;
 
 class News
 {

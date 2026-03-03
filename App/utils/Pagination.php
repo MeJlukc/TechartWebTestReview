@@ -1,4 +1,7 @@
 <?php
+
+namespace App\utils;
+
 class Pagination
 {
     protected $currentPageNumber;
