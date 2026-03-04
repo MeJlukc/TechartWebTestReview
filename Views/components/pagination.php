@@ -3,7 +3,7 @@
     if ($hasPrevPage):
     ?>
         <li class="pagination__item">
-            <a href="/?page=<?= $currentPageNumber - 1 ?>" class="pagination__link pagination__link--before">
+            <a href="/news/page-<?= $currentPageNumber - 1 ?>/" class="pagination__link pagination__link--before">
                 <span class="pagination__arrow pagination__arrow--before"></span>
             </a>
         </li>
@@ -15,7 +15,7 @@
     for ($i = $beginPaginationPage; $i <= $endPaginationPage; $i++):
     ?>
         <li class="pagination__item">
-            <a href="/?page=<?=$i?>" class="pagination__link <?= $i == $currentPageNumber ? 'pagination__link--active' : '' ?>"><?=$i?></a>
+            <a href="/news/page-<?=$i?>/" class="pagination__link <?= $i == $currentPageNumber ? 'pagination__link--active' : '' ?>"><?=$i?></a>
         </li>
     <?php
     endfor;
@@ -25,7 +25,7 @@
     if ($hasNextPage):
     ?>
         <li class="pagination__item">
-            <a href="/?page=<?= $currentPageNumber + 1 ?>" class="pagination__link pagination__link--next">
+            <a href="/news/page-<?= $currentPageNumber + 1 ?>/" class="pagination__link pagination__link--next">
                 <span class="pagination__arrow pagination__arrow--next"></span>
             </a>
         </li>

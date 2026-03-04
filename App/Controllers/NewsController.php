@@ -8,11 +8,12 @@ use App\Utils\Path;
 
 class NewsController extends Controller
 {
-    public function allNewsPage()
+    public function allNewsPage($page = 1)
     {
         $news = new News();
 
-        $currentPageNumber = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        // $currentPageNumber = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $currentPageNumber = $page;
 
         $limitNewsItems = 4;
 
@@ -21,7 +22,7 @@ class NewsController extends Controller
 
         if (($currentPageNumber < 1) || $currentPageNumber > $totalPages) {
             return $this->notFoundPage();
-        }
+        }   
 
         $offset = ($currentPageNumber - 1) * $limitNewsItems;
 
