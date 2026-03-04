@@ -8,32 +8,26 @@ use App\Utils\Path;
 
 class NewsController extends Controller
 {
-    protected $model;
-
-    public function __construct()
-    {
-        $this->model = new News();
-    }
-
     public function allNewsPage()
     {
+        $news = new News();
+
         $currentPageNumber = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 
         $limitNewsItems = 4;
 
-        $totalNews = $this->model->getTotal();
+        $totalNews = $news->getTotal();
         $totalPages = ceil($totalNews / $limitNewsItems);
 
         if (($currentPageNumber < 1) || $currentPageNumber > $totalPages) {
-            notFoundPage();
-            return;
+            return $this->notFoundPage();
         }
 
         $offset = ($currentPageNumber - 1) * $limitNewsItems;
 
-        $newsList = $this->model->getList($limitNewsItems, $offset);
+        $newsList = $news->getList($limitNewsItems, $offset);
 
-        $lastNewsItem = $this->model->getLastOne();
+        $lastNewsItem = $news->getLastOne();
 
         $pagination = new Pagination($currentPageNumber, $totalPages);
         [$beginPaginationPage, $endPaginationPage, $hasPrevPage, $hasNextPage] = $pagination->getPagination();
@@ -43,14 +37,15 @@ class NewsController extends Controller
 
     public function selectedNewsPage($id)
     {
-        $totalNews = $this->model->getTotal();
+        $news = new News();
+
+        $totalNews = $news->getTotal();
 
         if ($id < 1 || $id > $totalNews) {
-            notFoundPage();
-            return;
+            return $this->notFoundPage();
         } 
 
-        $news = $this->model->findById($id);
+        $newsItem = $news->findById($id);
 
         require Path::getAbsolute('Views/selected_news.php');
     }
