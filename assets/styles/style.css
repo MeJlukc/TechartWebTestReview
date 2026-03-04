@@ -437,6 +437,27 @@ body {
 
 
 /* =====================
+    home page / Главная страница
+===================== */
+
+.home-page {
+    flex: 1;
+}
+
+.home-page__container {
+    display: flex;
+    align-items: center;
+    padding-inline: var(--base-page-inline-indent);
+    padding-block: 100px;
+}
+
+.home-page__button {
+    margin-top: auto;
+    height: 54px;
+}
+
+
+/* =====================
     Media query / Медиа запросы
 ===================== */
 
