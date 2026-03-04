@@ -1,8 +1,8 @@
 <?php
-require __DIR__ . '/config/config.php';
 require __DIR__ . '/config/autoloader.php';
 
 use App\Controllers\NewsController;
+use App\Utils\Path;
 
 $controller = new NewsController();
 

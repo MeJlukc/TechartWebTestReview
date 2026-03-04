@@ -10,7 +10,7 @@ class DB
 
     public static function getConnection()
     {
-        $params = require ROOT . '/config/db_config.php';
+        $params = require Path::getAbsolute('config/db_config.php');
 
         if (self::$connection) {
             return self::$connection;

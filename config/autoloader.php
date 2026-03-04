@@ -1,5 +1,5 @@
 <?php
-spl_autoload_register(function($className) {
+spl_autoload_register(function ($className) {
     $path = str_replace('\\', '/', $className);
     $file = dirname(__DIR__) . '/' . $path . '.php';
 
