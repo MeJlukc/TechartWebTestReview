@@ -150,8 +150,12 @@ body {
     display: flex;
     padding-inline: var(--base-page-inline-indent);
     padding-block: 40px;
-    column-gap: 25px;
     border-bottom: 1px solid var(--color-black);
+}
+
+.header__container {
+    display: flex;
+    column-gap: 25px;
 }
 
 .header__title {
@@ -485,6 +489,10 @@ body {
         --line-height-title: 120%;
         --line-height-content: 140%;
     }
+
+    .last-news {
+        height: 400px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -506,6 +514,8 @@ body {
 
     .header {
         padding-block: 15px;
+    }
+    .header__container {
         column-gap: 10px;
     }
 
