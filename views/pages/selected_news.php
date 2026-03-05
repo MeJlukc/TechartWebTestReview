@@ -1,4 +1,10 @@
-<main class="work-news">
+<?php
+use App\Utils\Path;
+
+ob_start();
+?>
+
+<section class="work-news">
     <p class="work-news__path">
         <a class="work-news__path__link" href="/news/">Главная</a> / <span class="text-color--grey"><?=$newsItem['title']?></span>
     </p>
@@ -14,4 +20,10 @@
             <img src="/assets/images/<?=$newsItem['image']?>" alt="Selected news image" class="work-news__image">
         </div>
     </div>
-</main>
+</section>
+
+<?php
+$content = ob_get_clean();
+
+require Path::getAbsolute('views/layout.php');
+?>

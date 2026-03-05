@@ -8,11 +8,11 @@ class Controller
     public function notFoundPage()
     {
         header("HTTP/1.0 404 Not Found");
-        require Path::getAbsolute('Views/404.php');
+        require Path::getAbsolute('views/pages/404.php');
     }
 
     public function homePage()
     {
-        require Path::getAbsolute('Views/home_page.php');
+        require Path::getAbsolute('views/pages/home.php');
     }
 }

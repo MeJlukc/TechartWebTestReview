@@ -30,7 +30,7 @@ class NewsController extends Controller
         $pagination = new Pagination($currentPageNumber, $totalPages);
         [$beginPaginationPage, $endPaginationPage, $hasPrevPage, $hasNextPage] = $pagination->getPagination();
 
-        require Path::getAbsolute('Views/all_news.php');
+        require Path::getAbsolute('views/pages/all_news.php');
     }
 
     public function selectedNewsPage($id)
@@ -45,6 +45,6 @@ class NewsController extends Controller
 
         $newsItem = $news->findById($id);
 
-        require Path::getAbsolute('Views/selected_news.php');
+        require Path::getAbsolute('views/pages/selected_news.php');
     }
 }
