@@ -29,8 +29,9 @@ use App\Utils\Path;
         </div>
 
         <?php
-        require Path::getAbsolute('views/pages/components/pagination.php');
+        require Path::getAbsolute('views/templates/components/pagination.php');
         ?>
+        
     </section>
     
 </section>
