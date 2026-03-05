@@ -44,6 +44,11 @@ class Pagination
         $hasPreviousPage = $this->hasPreviousPage();
         $hasNextPage = $this->hasNextPage();
 
-        return [$beginPaginationPage, $endPaginationPage, $hasPreviousPage, $hasNextPage];
+        return [
+            'beginPage' => $beginPaginationPage,
+            'endPage' => $endPaginationPage,
+            'hasPrevPage' => $hasPreviousPage, 
+            'hasNextPage' => $hasNextPage
+        ];
     }
 }

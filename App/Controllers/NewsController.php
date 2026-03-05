@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\Models\News;
 use App\Utils\Pagination;
-use App\Utils\Path;
 
 class NewsController extends Controller
 {
@@ -28,9 +27,14 @@ class NewsController extends Controller
         $lastNewsItem = $news->getLastOne();
 
         $pagination = new Pagination($currentPageNumber, $totalPages);
-        [$beginPaginationPage, $endPaginationPage, $hasPrevPage, $hasNextPage] = $pagination->getPagination();
+        $paginationInfo = $pagination->getPagination();
 
-        require Path::getAbsolute('views/pages/all_news.php');
+        $this->render('views/pages/news_list.php', [
+            'currentPageNumber' => $currentPageNumber,
+            'lastNewsItem' => $lastNewsItem,
+            'newsList' => $newsList,
+            'pagination' => $paginationInfo,
+        ]);
     }
 
     public function selectedNewsPage($id)
@@ -45,6 +49,9 @@ class NewsController extends Controller
 
         $newsItem = $news->findById($id);
 
-        require Path::getAbsolute('views/pages/selected_news.php');
+        $this->render('views/pages/news_detail.php', [
+            'totalNews' => $totalNews, 
+            'newsItem' => $newsItem,
+        ]);
     }
 }

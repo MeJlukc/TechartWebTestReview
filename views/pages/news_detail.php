@@ -1,9 +1,3 @@
-<?php
-use App\Utils\Path;
-
-ob_start();
-?>
-
 <section class="work-news">
     <p class="work-news__path">
         <a class="work-news__path__link" href="/news/">Главная</a> / <span class="text-color--grey"><?=$newsItem['title']?></span>
@@ -21,9 +15,3 @@ ob_start();
         </div>
     </div>
 </section>
-
-<?php
-$content = ob_get_clean();
-
-require Path::getAbsolute('views/layout.php');
-?>
