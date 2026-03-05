@@ -1,43 +1,28 @@
 <?php
 require __DIR__ . '/config/autoloader.php';
 
-use App\Controllers\Controller;
-use App\Controllers\NewsController;
-use App\Utils\Path;
-
 $requestUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-$controller = new Controller();
-$newsController = new NewsController();
-
 $routes = [
-    '#^/$#' => function() use ($controller) {
-        $controller->homePage();
-    },
-    '#^/news/$#' => function() use ($newsController) {
-        $newsController->allNewsPage();
-    },
-    '#^/news/page-(\d+)/$#' => function($pageNumber) use ($newsController) {
-        $newsController->allNewsPage($pageNumber);
-    },
-    '#^/news/(\d+)/$#' => function($id) use ($newsController) {
-        $newsController->selectedNewsPage($id);
-    },
-    '#^.*$#' => function() use ($controller) {
-        $controller->notFoundPage();
-    },
+    '#^/$#' => ['Controller', 'homePage'],
+    '#^/news/$#' => ['NewsController', 'allNewsPage'],
+    '#^/news/page-(\d+)/$#' => ['NewsController', 'allNewsPage'],
+    '#^/news/(\d+)/$#' => ['NewsController', 'selectedNewsPage'],
+    '#^.*$#' => ['Controller', 'notFoundPage'],
 ];
 
-foreach ($routes as $route => $action) {
+foreach ($routes as $route => [$controllerName, $action]) {
     if (preg_match($route, $requestUri, $matches)) {
+        $fullClassName = "\\App\\Controllers\\" . $controllerName;
+        $controller = new $fullClassName();
 
         if (isset($matches[1])) {
             array_shift($matches);
-            $action(...$matches);
+            $controller->$action(...$matches);
             break;
         }
-
-        $action();
+        
+        $controller->$action();
         break;
     }
 }
