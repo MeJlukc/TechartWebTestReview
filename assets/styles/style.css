@@ -446,14 +446,21 @@ body {
 
 .home-page__container {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
     padding-inline: var(--base-page-inline-indent);
     padding-block: 100px;
+    gap: 15px;
+}
+
+.home-page__title {
+    font-size: var(--font-size-h1);
 }
 
 .home-page__button {
     margin-top: auto;
     height: 54px;
+    width: fit-content;
 }
 
 

@@ -5,26 +5,39 @@ use App\Controllers\Controller;
 use App\Controllers\NewsController;
 use App\Utils\Path;
 
+$requestUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
 $controller = new Controller();
 $newsController = new NewsController();
 
-$requestUri = $_SERVER['REQUEST_URI'];
-
-$parts = explode('/', trim($requestUri, '/'));
-
-if ($parts[0] == 'news') {
-    if (isset($parts[1]) && preg_match('/^\d+$/', $parts[1])) {
-        $newsController->selectedNewsPage($parts[1]);
-    } elseif (isset($parts[1]) && preg_match('/^page-\d+$/', $parts[1])) {
-        $arrayParts = explode('-', $parts[1]);
-
-        $pageNumber = end($arrayParts);
-        $pageNumberToInt = (int)$pageNumber;
-        
-        $newsController->allNewsPage($pageNumberToInt);
-    } else {
+$routes = [
+    '#^/$#' => function() use ($controller) {
+        $controller->homePage();
+    },
+    '#^/news/$#' => function() use ($newsController) {
         $newsController->allNewsPage();
+    },
+    '#^/news/page-(\d+)/$#' => function($pageNumber) use ($newsController) {
+        $newsController->allNewsPage($pageNumber);
+    },
+    '#^/news/(\d+)/$#' => function($id) use ($newsController) {
+        $newsController->selectedNewsPage($id);
+    },
+    '#^.*$#' => function() use ($controller) {
+        $controller->notFoundPage();
+    },
+];
+
+foreach ($routes as $route => $action) {
+    if (preg_match($route, $requestUri, $matches)) {
+
+        if (isset($matches[1])) {
+            array_shift($matches);
+            $action(...$matches);
+            break;
+        }
+
+        $action();
+        break;
     }
-} else {
-    $controller->homePage();
 }

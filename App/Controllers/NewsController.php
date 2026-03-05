@@ -8,12 +8,9 @@ use App\Utils\Path;
 
 class NewsController extends Controller
 {
-    public function allNewsPage($page = 1)
+    public function allNewsPage($currentPageNumber = 1)
     {
         $news = new News();
-
-        // $currentPageNumber = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-        $currentPageNumber = $page;
 
         $limitNewsItems = 4;
 
