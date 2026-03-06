@@ -2,29 +2,24 @@
 
 namespace App\Utils;
 
+use \Exception;
+
 class Template
 {
-    public static function getPathByName($templateName)
+    public static function getPath($templateName)
     {
-        $templateFullName = null;
+        $extensions = ['.php', '.twig', '.pug'];
 
-        $files = scandir(Path::getAbsolute('views/templates/'));
-        foreach ($files as $file) {
-            $splittedFile = explode('.', $file);
-            $fileName = $splittedFile[0];
+        $templateName = str_replace('.', '/', $templateName);
+        
+        foreach ($extensions as $extension) {
+            $templatePath = Path::getAbsolute("views/templates/" . $templateName . $extension);
 
-            if ($fileName == $templateName) {
-                $templateFullName = $file;
-                break;
+            if (file_exists($templatePath)) {
+                return $templatePath;
             }
         }
 
-        if (!$templateFullName) {
-            return "Template $templateName does not exist";
-        }
-
-        $templatePath = Path::getAbsolute('views/templates/' . $templateFullName);
-
-        return $templatePath;
+        throw new Exception("Template $templateName does not exist");
     }
 }

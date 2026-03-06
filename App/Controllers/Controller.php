@@ -10,19 +10,19 @@ class Controller
     {
         extract($data);
 
-        $templatePath = Template::getPathByName($templateName);
+        $templatePath = Template::getPath($templateName);
 
         ob_start();
         require $templatePath;
         $content = ob_get_clean();
 
-        require Path::getAbsolute('views/layout.php');
+        require Path::getAbsolute('views/layouts/layout.php');
     }
 
     public function notFoundPage()
     {
         header("HTTP/1.0 404 Not Found");
-        $this->render('404');
+        $this->render('errors.404');
     }
 
     public function homePage()

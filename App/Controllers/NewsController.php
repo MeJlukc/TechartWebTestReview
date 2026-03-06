@@ -29,7 +29,7 @@ class NewsController extends Controller
         $pagination = new Pagination($currentPageNumber, $totalPages);
         $paginationInfo = $pagination->getPagination();
 
-        $this->render('news_listt', [
+        $this->render('news.list', [
             'currentPageNumber' => $currentPageNumber,
             'lastNewsItem' => $lastNewsItem,
             'newsList' => $newsList,
@@ -49,7 +49,7 @@ class NewsController extends Controller
 
         $newsItem = $news->findById($id);
 
-        $this->render('news_detail', [
+        $this->render('news.detail', [
             'totalNews' => $totalNews, 
             'newsItem' => $newsItem,
         ]);
